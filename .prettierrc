@@ -1,0 +1,10 @@
+{
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      "singleQuote": false,
+      "arrowParens": "avoid"
+    }
+  },
+  "singleQuote": false,
+  "arrowParens": "avoid"
+}

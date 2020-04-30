@@ -1,0 +1,35 @@
+// Define your variable overrides here
+$primary: #c06c84;
+$secondary: #6c5b7c;
+$info: #f8b595;
+$danger: #d44755;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "info": $info,
+  "danger": $danger
+);
+
+// Navbar variables
+$navbar-text: #3e3e3e;
+
+// original in main js
+// @import 'bootstrap/dist/css/bootstrap.css';
+// @import 'bootstrap-vue/dist/bootstrap-vue.css';
+
+// Include Bootstrap and BootstrapVue SCSS files
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootstrap-vue/src/index.scss";
+
+// Color palette: https://colorhunt.co/palette/117448
+
+.form-control::placeholder {
+  color: #e7e7e7;
+}
+
+.table .thead-light th {
+  font-weight: 700;
+  color: white !important;
+  background-color: $primary !important;
+}
