@@ -1,6 +1,6 @@
 import { sortCollectionByDate } from "@/helper/sortHelper";
 import _ from "lodash";
-import { getHighestNextDate } from "./InsertTimesheetDataHelper";
+import { getNextDayOfHighestDate } from "./InsertTimesheetDataHelper";
 
 const mutations = {
   addTimeEntryObject(state, { payload, rootState }) {
@@ -17,7 +17,7 @@ const mutations = {
       return e.id !== timeEntry.id;
     });
     rootState.isEditMode = false;
-    rootState.timesheetEntry.date = getHighestNextDate(
+    rootState.timesheetEntry.date = getNextDayOfHighestDate(
       rootGetters.getInsertedTimesheetDates
     );
   },

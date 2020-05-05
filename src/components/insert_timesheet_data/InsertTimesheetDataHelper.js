@@ -1,7 +1,7 @@
 import moment from "moment";
 import _ from "lodash";
 
-let getHighestNextDate = dateArray => {
+let getNextDayOfHighestDate = dateArray => {
   if (_.isEmpty(dateArray)) {
     return moment().toDate();
   }
@@ -18,4 +18,4 @@ let generateHighestID = insertedProjectEntries => {
   return projectEntryID;
 };
 
-export { getHighestNextDate, generateHighestID };
+export { getNextDayOfHighestDate, generateHighestID };

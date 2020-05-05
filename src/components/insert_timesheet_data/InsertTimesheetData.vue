@@ -99,7 +99,7 @@ import {
   calculateWorkedHours
 } from "@/helper/dateHelper";
 import {
-  getHighestNextDate,
+  getNextDayOfHighestDate,
   generateHighestID
 } from "./InsertTimesheetDataHelper";
 import DatePicker from "@/libs/v-calendar/src/components/DatePicker.vue";
@@ -196,7 +196,7 @@ export default {
       });
 
       let insertedTimesheetDates = this.getInsertedTimesheetDates;
-      this.date = getHighestNextDate(insertedTimesheetDates);
+      this.date = getNextDayOfHighestDate(insertedTimesheetDates);
       this.attributes[0].dates = insertedTimesheetDates;
     },
     deleteEntry: function() {

@@ -1,7 +1,7 @@
 import moment from "moment";
 import _ from "lodash";
 
-import { getHighestNextDate } from "@/components/insert_timesheet_data/InsertTimesheetDataHelper";
+import { getNextDayOfHighestDate } from "@/components/insert_timesheet_data/InsertTimesheetDataHelper";
 
 describe("test store getters", () => {
   it("should get current date when date array is empty", () => {
@@ -9,13 +9,13 @@ describe("test store getters", () => {
     let currentDay = moment().toDate();
 
     // call method
-    let highest = getHighestNextDate();
+    let highest = getNextDayOfHighestDate();
 
     // expect
     expect(highest.toString()).toBe(currentDay.toString());
   });
 
-  it("should getHighestNextDate when multible dates are given", () => {
+  it("should getNextDayOfHighestDate  when multible dates are given", () => {
     // init
     let firstLowerDate = moment().toDate();
     let dayAfterTomorrowMoment = moment().add(2, "days");
@@ -25,7 +25,7 @@ describe("test store getters", () => {
     let dates = [firstLowerDate, dayAfterTomorrowMoment.toDate(), tomorrow];
 
     // call method
-    let tomorrowDateFromHighestDate = getHighestNextDate(dates);
+    let tomorrowDateFromHighestDate = getNextDayOfHighestDate(dates);
 
     // expect
     expect(
