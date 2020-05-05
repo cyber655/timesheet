@@ -83,7 +83,7 @@ nav {
   @extend .center;
   box-shadow: 4px 4px 5px 0px rgb(224, 224, 224);
   background-color: #6c5b7c;
-  color: #f8b595;
+  color: $info;
   font-weight: 700;
 }
 
