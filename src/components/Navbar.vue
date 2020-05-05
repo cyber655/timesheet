@@ -8,7 +8,7 @@
         <input type="file" id="file-import" v-on:change="restoreState" />
       </li>
       <li @click="downloadState">
-        <button class="btn btn-info navbar-button">Download state</button>
+        <b-button variant="info" class="navbar-button">Download state</b-button>
       </li>
       <li @click="createPDF">
         <div class="navbar-main-navigation">Create PDF</div>
@@ -80,9 +80,7 @@ export default {
 
 <style scoped lang="scss">
 nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @extend .center;
   box-shadow: 4px 4px 5px 0px rgb(224, 224, 224);
   background-color: #6c5b7c;
   color: #f8b595;
@@ -95,9 +93,7 @@ nav {
 }
 
 ul {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @extend .center;
   list-style-type: none;
   padding: 10px 0 10px 0;
   margin: 0;

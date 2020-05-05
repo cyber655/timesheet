@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="center">
     <b-table
       id="time-entry-table"
       v-show="this.getInsertedEntries.length > 0"
@@ -10,7 +10,7 @@
       :striped="true"
       :bordered="true"
       :fixed="true"
-      class="mt-3"
+      class="mt-3 insert-time"
       thead-class="thead-light"
       outlined
       @row-clicked="onRowClicked"
@@ -88,6 +88,12 @@ label {
 
 .error {
   margin-top: 10px;
+}
+
+.insert-time {
+  max-width: 1200px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 /deep/ tr:hover,

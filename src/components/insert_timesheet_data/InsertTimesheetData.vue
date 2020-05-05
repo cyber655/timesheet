@@ -72,16 +72,18 @@
               <span>{{ error }}</span>
             </div>
 
-            <button class="btn btn-primary" @click="saveEntry">
+            <b-button variant="primary" @click="saveEntry">
               {{ isEditMode ? "Edit" : "Add" }}
-            </button>
-            <button
-              class="btn btn-danger delete-button"
+            </b-button>
+
+            <b-button
+              variant="danger"
+              class="delete-button"
               v-show="isEditMode"
               @click="deleteEntry"
             >
               Delete
-            </button>
+            </b-button>
           </div>
         </div>
       </div>

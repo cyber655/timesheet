@@ -33,3 +33,9 @@ $navbar-text: #3e3e3e;
   color: white !important;
   background-color: $primary !important;
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
