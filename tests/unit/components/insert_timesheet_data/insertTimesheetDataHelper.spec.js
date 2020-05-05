@@ -1,7 +1,10 @@
 import moment from "moment";
 import _ from "lodash";
 
-import { getNextDayOfHighestDate } from "@/components/insert_timesheet_data/InsertTimesheetDataHelper";
+import {
+  getNextDayOfHighestDate,
+  generateHighestID
+} from "@/components/insert_timesheet_data/InsertTimesheetDataHelper";
 
 describe("test store getters", () => {
   it("should get current date when date array is empty", () => {
@@ -15,7 +18,7 @@ describe("test store getters", () => {
     expect(highest.toString()).toBe(currentDay.toString());
   });
 
-  it("should getNextDayOfHighestDate  when multible dates are given", () => {
+  it("should getNextDayOfHighestDate when multible dates are given", () => {
     // init
     let firstLowerDate = moment().toDate();
     let dayAfterTomorrowMoment = moment().add(2, "days");
@@ -34,5 +37,28 @@ describe("test store getters", () => {
         .toDate()
         .toString()
     ).toBe(tomorrowDateFromHighestDate.toString());
+  });
+
+  it("should generateHighestID from insertedProjectEntries", () => {
+    // init
+    let timeEntries = [
+      {
+        id: 0
+      },
+      {
+        id: 2
+      },
+      {
+        id: 1
+      }
+    ];
+
+    // call method
+    let highestIDWithEmptyValues = generateHighestID();
+    let highestID = generateHighestID(timeEntries);
+
+    // expect
+    expect(highestID).toBe(3);
+    expect(highestIDWithEmptyValues).toBe(0);
   });
 });
