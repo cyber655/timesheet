@@ -342,9 +342,7 @@ label {
 }
 
 .insert-data {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @extend .center;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
   flex-wrap: wrap;
   margin-bottom: 50px;
