@@ -1,6 +1,6 @@
 // store.spec.js
 import moment from "moment";
-import { getters } from "../../src/store";
+import { getters } from "@/../src/store";
 
 describe("test store getters", () => {
   it("should getOverallHours", () => {
