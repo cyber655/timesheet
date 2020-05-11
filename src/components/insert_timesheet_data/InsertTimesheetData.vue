@@ -350,7 +350,7 @@ label {
 }
 
 label {
-  color: #6c5b7c;
+  color: $secondary;
 }
 
 .form-control:focus {
