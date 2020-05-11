@@ -23,5 +23,5 @@ module.exports = {
       }
     }
   ],
-  ignorePatterns: ["./src/libs/v-calendar/**/.js", "node_modules/"]
+  ignorePatterns: ["./src/libs/v-calendar/**", "node_modules/"]
 };
