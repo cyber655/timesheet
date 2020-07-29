@@ -57,12 +57,12 @@ export default {
         return;
       }
 
-      let context = this;
+      // let context = this;
       var reader = new FileReader();
 
       reader.onload = e => {
         let content = serialijse.deserialize(e.target.result);
-        context.$store.commit("UPDATE_COMPLETE_STATE", content);
+        this.$store.commit("UPDATE_COMPLETE_STATE", content);
       };
       reader.readAsText(file);
     }

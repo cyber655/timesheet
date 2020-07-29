@@ -62,6 +62,9 @@ export const mutations = {
   },
   SET_EDIT_MODE(state, value) {
     state.isEditMode = value;
+  },
+  UPDATE_COMPLETE_STATE(state, value) {
+    Object.assign(state, value);
   }
 };
 
