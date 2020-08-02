@@ -14,6 +14,7 @@
       thead-class="thead-light"
       outlined
       @row-clicked="onRowClicked"
+      data-cy="time-table"
     ></b-table>
   </div>
 </template>

@@ -21,6 +21,7 @@
                 class="form-control padding-start-end-time"
                 type="text"
                 placeholder="DERMALOG A2019-5807"
+                data-cy="project-title"
               />
             </div>
             <div class="form-group">
@@ -31,6 +32,7 @@
                 class="form-control padding-start-end-time"
                 type="text"
                 placeholder="10:00"
+                data-cy="start-time"
               />
             </div>
             <div class="form-group">
@@ -41,6 +43,7 @@
                 class="form-control padding-start-end-time"
                 type="text"
                 placeholder="18:30"
+                data-cy="end-time"
               />
             </div>
             <div class="form-group">
@@ -51,6 +54,7 @@
                 class="form-control padding-start-end-time"
                 type="text"
                 placeholder="Enhance performance"
+                data-cy="description"
               />
             </div>
             <div class="form-group">
@@ -72,7 +76,11 @@
               <span>{{ error }}</span>
             </div>
 
-            <b-button variant="primary" @click="saveEntry">
+            <b-button
+              variant="primary"
+              @click="saveEntry"
+              data-cy="add-or-edit-entry"
+            >
               {{ isEditMode ? "Edit" : "Add" }}
             </b-button>
 
