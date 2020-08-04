@@ -2,10 +2,10 @@
   <nav class="align-middle">
     <ul>
       <li>
-        <label for="file-import" class="btn btn-info navbar-button"
-          >Restore state</label
-        >
-        <input type="file" id="file-import" v-on:change="restoreState" />
+        <label for="file-import" class="btn btn-info navbar-button">
+          Restore state
+        </label>
+        <input type="file" id="file-import" @change="restoreState" />
       </li>
       <li @click="downloadState">
         <b-button variant="info" class="navbar-button">Download state</b-button>
@@ -57,7 +57,6 @@ export default {
         return;
       }
 
-      // let context = this;
       var reader = new FileReader();
 
       reader.onload = e => {

@@ -216,13 +216,12 @@ export default {
       this.attributes[0].dates = this.getInsertedTimesheetDates;
 
       //Let's be honest: this is a workaround for the library v-calendar
-      let context = this;
       _.forEach(
         this.$refs.vueDatePicker.$children[0].$children[0].$children[0]
           .$children[0].$children[2].$children,
         value => {
           let currentComponentDate = value.day.date;
-          let selectedDateWithoutTime = moment(context.date)
+          let selectedDateWithoutTime = moment(this.date)
             .startOf("day")
             .toDate();
 
@@ -233,10 +232,10 @@ export default {
           }
           value.day.refresh = true;
 
-          //This date is added from myself
           value.isDeleteMode = true;
           value.refresh();
           value.isDeleteMode = false;
+          //Workaround end
         }
       );
     }
