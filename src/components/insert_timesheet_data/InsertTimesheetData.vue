@@ -70,10 +70,10 @@
 
             <div
               class="alert alert-danger error"
-              v-show="!isErrorEmpty"
+              v-show="this.$store.state.insertTimeSheet.error"
               role="alert"
             >
-              <span>{{ error }}</span>
+              <span>{{ this.$store.state.insertTimeSheet.error }}</span>
             </div>
 
             <b-button
@@ -120,7 +120,6 @@ export default {
   },
   data() {
     return {
-      error: "",
       attributes: [
         {
           key: "today",
@@ -134,7 +133,7 @@ export default {
   },
   methods: {
     saveEntry: function() {
-      this.error = "";
+      this.dispatchError();
 
       let date = this.date;
       let startTime = this.startTime;
@@ -146,27 +145,27 @@ export default {
       var checkTimeFormat = new RegExp("^([01][0-9]|2[0-3]):([0-5][0-9])$");
 
       if (_.isEmpty(startTime) || !startTime.match(checkTimeFormat)) {
-        this.error = "Start time is empty or has wrong format.";
+        this.dispatchError("Start time is empty or has wrong format.");
         return;
       }
 
       if (_.isEmpty(endTime) || !endTime.match(checkTimeFormat)) {
-        this.error = "End time is empty or has wrong format.";
+        this.dispatchError("End time is empty or has wrong format.");
         return;
       }
 
       if (_.isEmpty(breakTime) || !breakTime.match(checkTimeFormat)) {
-        this.error = "Break time is empty or has wrong format.";
+        this.dispatchError("Break time is empty or has wrong format.");
         return;
       }
 
       if (_.isEmpty(description)) {
-        this.error = "Description can not be empty.";
+        this.dispatchError("Description can not be empty.");
         return;
       }
 
       if (_.isEmpty(this.project)) {
-        this.error = "Project can not be empty.";
+        this.dispatchError("Project can not be empty.");
         return;
       }
 
@@ -207,6 +206,9 @@ export default {
       this.date = getNextDayOfHighestDate(insertedTimesheetDates);
       this.attributes[0].dates = insertedTimesheetDates;
     },
+    dispatchError: function(error = "") {
+      this.$store.dispatch("insertTimeSheet/SET_ERROR", { payload: error });
+    },
     deleteEntry: function() {
       this.$store.dispatch(
         "insertTimeSheet/DELETE_TIME_ENTRY",
@@ -245,7 +247,8 @@ export default {
       "getInsertedEntries",
       "getIsEdited",
       "getCurrentEntry",
-      "getInsertedTimesheetDates"
+      "getInsertedTimesheetDates",
+      "getInsertTimesheetEntryError"
     ]),
     ...mapActions("insertTimeSheet", [
       "ADD_TIME_ENTRY_OBJECT",

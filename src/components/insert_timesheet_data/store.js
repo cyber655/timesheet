@@ -2,7 +2,14 @@ import { sortCollectionByDate } from "@/helper/sortHelper";
 import _ from "lodash";
 import { getNextDayOfHighestDate } from "./InsertTimesheetDataHelper";
 
+const state = {
+  error: ""
+};
+
 const mutations = {
+  setError(state, { payload }) {
+    state.error = payload;
+  },
   addTimeEntryObject(state, { payload, rootState }) {
     rootState.insertedEntries.push(payload);
     sortCollectionByDate(rootState.insertedEntries);
@@ -27,6 +34,11 @@ const mutations = {
 };
 
 const actions = {
+  SET_ERROR(context, { payload }) {
+    context.commit("setError", {
+      payload
+    });
+  },
   ADD_TIME_ENTRY_OBJECT(context, { payload, timesheetEntry }) {
     context.commit("addTimeEntryObject", {
       payload,
@@ -65,7 +77,7 @@ const actions = {
 
 export const insertTimeSheetDataStoreModule = {
   namespaced: true,
-  state: {},
+  state,
   getters: {},
   mutations,
   actions
