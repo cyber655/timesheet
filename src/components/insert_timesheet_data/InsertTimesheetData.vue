@@ -363,11 +363,6 @@ label {
   color: $secondary;
 }
 
-.form-control:focus {
-  box-shadow: 0 0 0 1px rgba(216, 159, 159, 0.5);
-  border-color: #d89f9f;
-}
-
 .vc-container {
   --day-min-height: 42px;
 }

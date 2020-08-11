@@ -3,6 +3,7 @@ $primary: #c06c84;
 $secondary: #6c5b7c;
 $info: #f8b595;
 $danger: #d44755;
+$grey: #e8e8e8;
 
 $theme-colors: (
   "primary": $primary,
@@ -24,8 +25,17 @@ $navbar-text: #3e3e3e;
 
 // Color palette: https://colorhunt.co/palette/117448
 
+.form-control {
+  border: 1px solid $grey;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 1px rgba(216, 159, 159, 0.5);
+  border-color: #d89f9f;
+}
+
 .form-control::placeholder {
-  color: #e7e7e7;
+  color: $grey;
 }
 
 .table .thead-light th {
