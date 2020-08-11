@@ -202,9 +202,7 @@ export default {
         }
       });
 
-      let insertedTimesheetDates = this.getInsertedTimesheetDates;
-      this.date = getNextDayOfHighestDate(insertedTimesheetDates);
-      this.attributes[0].dates = insertedTimesheetDates;
+      this.date = getNextDayOfHighestDate(this.getInsertedTimesheetDates);
     },
     dispatchError: function(error = "") {
       this.$store.dispatch("insertTimeSheet/SET_ERROR", { payload: error });
@@ -320,6 +318,11 @@ export default {
           breakTime: value
         });
       }
+    }
+  },
+  watch: {
+    getInsertedTimesheetDates: function() {
+      this.attributes[0].dates = this.getInsertedTimesheetDates;
     }
   }
 };
