@@ -30,10 +30,10 @@ class PDFHelper {
   }
 
   writeMetaDataHeaderToPDF() {
-    let last_Y_TextPosotions = [];
+    let lastYTextPosition = [];
 
     let customerLinesToWrite = this.pdfSettings.customerData.split("\n");
-    last_Y_TextPosotions.push(
+    lastYTextPosition.push(
       this.writeLines(customerLinesToWrite, false, 12, 30.0)
     );
 
@@ -60,7 +60,7 @@ class PDFHelper {
     );
     timesheetInformationArray.push(`Name: ${this.pdfSettings.ownData.name}`);
 
-    last_Y_TextPosotions.push(
+    lastYTextPosition.push(
       this.writeLines(
         timesheetInformationArray,
         true,
@@ -69,8 +69,8 @@ class PDFHelper {
       )
     );
 
-    if (last_Y_TextPosotions.length >= 0) {
-      this.currentYPosition = Math.max.apply(Math, last_Y_TextPosotions) + 10;
+    if (lastYTextPosition.length >= 0) {
+      this.currentYPosition = Math.max.apply(Math, lastYTextPosition) + 10;
     }
   }
 
