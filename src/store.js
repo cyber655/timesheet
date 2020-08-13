@@ -69,14 +69,14 @@ export const mutations = {
 };
 
 const store = new Vuex.Store({
-  modules: {
-    insertTimeSheet: insertTimeSheetDataStoreModule,
-    pdfDataStore: pdfDataStoreModule
-  },
   strict: true,
-  state,
-  getters,
-  mutations,
+  modules: {
+    insertTimeSheet: _.cloneDeep(insertTimeSheetDataStoreModule),
+    pdfDataStore: _.cloneDeep(pdfDataStoreModule)
+  },
+  state: _.cloneDeep(state),
+  getters: _.cloneDeep(getters),
+  mutations: _.cloneDeep(mutations),
   actions: {}
 });
 export default store;

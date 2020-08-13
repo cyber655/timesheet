@@ -2,11 +2,11 @@ import { sortCollectionByDate } from "@/helper/sortHelper";
 import _ from "lodash";
 import { getNextDayOfHighestDate } from "./InsertTimesheetDataHelper";
 
-const state = {
+export const state = {
   error: ""
 };
 
-const mutations = {
+export const mutations = {
   setError(state, { payload }) {
     state.error = payload;
   },
@@ -33,7 +33,7 @@ const mutations = {
   }
 };
 
-const actions = {
+export const actions = {
   SET_ERROR(context, { payload }) {
     context.commit("setError", {
       payload

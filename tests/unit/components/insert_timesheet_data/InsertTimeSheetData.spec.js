@@ -2,7 +2,17 @@ import "../../matchmedia.mock";
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
 import InsertTimesheetData from "@/components/insert_timesheet_data/InsertTimesheetData.vue";
-import { state, getters } from "@/store";
+import {
+  state as rootState,
+  getters as rootGetters,
+  actions as rootActions,
+  mutations as rootMutations
+} from "@/store";
+import {
+  state,
+  actions,
+  mutations
+} from "@/components/insert_timesheet_data/store";
 import BootstrapVue from "bootstrap-vue";
 
 const localVue = createLocalVue();
@@ -16,14 +26,27 @@ describe("Testing Component Methods", () => {
 
   beforeEach(() => {
     store = new Vuex.Store({
-      state,
-      getters
+      strict: false,
+      modules: {
+        insertTimeSheet: {
+          namespaced: true,
+          state,
+          actions,
+          mutations
+        }
+      },
+      state: rootState,
+      getters: rootGetters,
+      actions: rootActions,
+      mutations: rootMutations
     });
     wrapper = shallowMount(InsertTimesheetData, { store, localVue });
   });
 
   it("should show an error, because start date is undefined", () => {
     wrapper.vm.saveEntry();
-    expect(wrapper.vm.error).toBeTruthy();
+    expect(wrapper.vm.$store.state.insertTimeSheet.error).toBe(
+      "Start time is empty or has wrong format."
+    );
   });
 });
