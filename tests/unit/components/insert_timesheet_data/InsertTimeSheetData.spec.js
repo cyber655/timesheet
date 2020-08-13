@@ -44,11 +44,55 @@ describe("Testing Component Methods", () => {
     wrapper = shallowMount(InsertTimesheetData, { store, localVue });
   });
 
-  it("should show an error, because start date is undefined", () => {
-    wrapper.vm.saveEntry();
+  let checkStartTimeIsEmptyOrHasWrongFormat = () => {
     expect(wrapper.vm.$store.state.insertTimeSheet.error).toBe(
       "Start time is empty or has wrong format."
     );
+  };
+
+  it("should show an error, because start date is undefined", () => {
+    wrapper.vm.saveEntry();
+    checkStartTimeIsEmptyOrHasWrongFormat();
+  });
+
+  it("should test regexp, for start date", () => {
+    Object.defineProperty(wrapper.vm, "startTime", {
+      get: jest.fn(() => "24:00"),
+      set: jest.fn(),
+      configurable: true
+    });
+
+    wrapper.vm.saveEntry();
+    checkStartTimeIsEmptyOrHasWrongFormat();
+
+    delete wrapper.vm.startTime;
+
+    Object.defineProperty(wrapper.vm, "startTime", {
+      get: jest.fn(() => "24:0"),
+      set: jest.fn(),
+      configurable: true
+    });
+
+    wrapper.vm.saveEntry();
+    checkStartTimeIsEmptyOrHasWrongFormat();
+
+    Object.defineProperty(wrapper.vm, "startTime", {
+      get: jest.fn(() => "2:00"),
+      set: jest.fn(),
+      configurable: true
+    });
+
+    wrapper.vm.saveEntry();
+    checkStartTimeIsEmptyOrHasWrongFormat();
+
+    Object.defineProperty(wrapper.vm, "startTime", {
+      get: jest.fn(() => "2400"),
+      set: jest.fn(),
+      configurable: true
+    });
+
+    wrapper.vm.saveEntry();
+    checkStartTimeIsEmptyOrHasWrongFormat();
   });
 
   it("should show an error, because end time undefined", () => {
