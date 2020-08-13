@@ -1,4 +1,5 @@
 import "../../matchmedia.mock";
+import _ from "lodash";
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
 import InsertTimesheetData from "@/components/insert_timesheet_data/InsertTimesheetData.vue";
@@ -30,15 +31,15 @@ describe("Testing Component Methods", () => {
       modules: {
         insertTimeSheet: {
           namespaced: true,
-          state,
-          actions,
-          mutations
+          state: _.cloneDeep(state),
+          actions: _.cloneDeep(actions),
+          mutations: _.cloneDeep(mutations)
         }
       },
-      state: rootState,
-      getters: rootGetters,
-      actions: rootActions,
-      mutations: rootMutations
+      state: _.cloneDeep(rootState),
+      getters: _.cloneDeep(rootGetters),
+      actions: _.cloneDeep(rootActions),
+      mutations: _.cloneDeep(rootMutations)
     });
     wrapper = shallowMount(InsertTimesheetData, { store, localVue });
   });
@@ -47,6 +48,18 @@ describe("Testing Component Methods", () => {
     wrapper.vm.saveEntry();
     expect(wrapper.vm.$store.state.insertTimeSheet.error).toBe(
       "Start time is empty or has wrong format."
+    );
+  });
+
+  it("should show an error, because end time undefined", () => {
+    Object.defineProperty(wrapper.vm, "startTime", {
+      get: jest.fn(() => "10:00"),
+      set: jest.fn()
+    });
+
+    wrapper.vm.saveEntry();
+    expect(wrapper.vm.$store.state.insertTimeSheet.error).toBe(
+      "End time is empty or has wrong format."
     );
   });
 });

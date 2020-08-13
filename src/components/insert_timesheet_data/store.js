@@ -77,8 +77,8 @@ export const actions = {
 
 export const insertTimeSheetDataStoreModule = {
   namespaced: true,
-  state,
+  state: state,
   getters: {},
-  mutations,
-  actions
+  mutations: mutations,
+  actions: actions
 };
